@@ -14,6 +14,8 @@ import { vitacuraUrl } from "./config/environmentVariables";
     const birthDate = "14081994";
 
     await addBasicInformation(page, rut, birthDate);
+
+    sendWhatsappMessage(`Hours available, check ${vitacuraUrl}`);
   } catch (error: any) {
     console.error(error);
     browser.close();
