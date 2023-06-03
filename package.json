@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/grossomanache/licence-check#readme",
   "dependencies": {
+    "@types/puppeteer": "^7.0.4",
     "puppeteer": "^20.5.0",
     "typescript": "^5.1.3"
   },
