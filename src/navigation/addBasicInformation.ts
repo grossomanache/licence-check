@@ -1,6 +1,8 @@
 import { Page } from "puppeteer";
 import inputTextOnField from "../inputting";
 import delayExecution from "../utils/delayExecution";
+import sendWhatsappMessage from "../messaging";
+import { debug } from "console";
 
 const addBasicInformation = async (
   page: Page,
@@ -32,11 +34,13 @@ const addBasicInformation = async (
   const alert = await page.waitForSelector(alertSelector);
 
   if (alert) {
-    const errorMessage = await (
-      await alert.getProperty("textContent")
-    ).jsonValue();
+    const errorMessage =
+      (await (await alert.getProperty("textContent")).jsonValue()) ??
+      "Hours not available";
 
-    throw new Error(errorMessage ?? "Error");
+    sendWhatsappMessage(errorMessage);
+
+    throw new Error(errorMessage);
   }
 };
 
